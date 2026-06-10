@@ -14,42 +14,42 @@ const projects = [
     desc: "Stackable & consumable inventory system for Meta Quest 2 with spatial audio and haptic feedback.",
     tags: ["Meta Quest 2", "Inventory", "Haptics", "Spatial Audio"],
     image: warzoneImg,
-    demo: "https://youtu.be/Aq44fjYC2Zk?si=GBtk13EUFP9cPOp5",
+    demo: "https://www.youtube.com/watch?v=Aq44fjYC2Zk",
   },
   {
     title: "Solar Panel Installation & Wiring",
     desc: "Guided VR training: step-by-step interactions, voice guidance and haptic feedback.",
     tags: ["VR Training", "Voice-Guided", "Haptics"],
     image: solarImg,
-    demo: "https://youtu.be/3_XPZH6o8mE?si=iXJqfb5BdjHGBfVT",
+    demo: "https://www.youtube.com/watch?v=3_XPZH6o8mE",
   },
   {
     title: "Nex Gen VR Room",
     desc: "Immersive VR environment with XR Interaction Toolkit, teleportation and full spatial audio.",
     tags: ["XR Toolkit", "Teleport", "Spatial Audio"],
     image: nexgenImg,
-    demo: "https://youtu.be/95waGzj0epk?si=LLxaopgujmXHau4E",
+    demo: "https://www.youtube.com/watch?v=95waGzj0epk",
   },
   {
     title: "360° Virtual Tour",
     desc: "Browser-friendly immersive tour built with stitched panoramic scenes and hotspots.",
     tags: ["360°", "WebXR", "Interactive"],
     image: tour360Img,
-    demo: "https://youtu.be/ImM30_FN6cg?si=DF_oT9VE1PmYv9Si",
+    demo: "https://www.youtube.com/watch?v=ImM30_FN6cg",
   },
   {
     title: "Virtual 3D Learning Platform",
     desc: "An interactive 3D classroom for STEM concepts — built during EDspire research.",
     tags: ["Education", "3D", "Unity"],
     image: learningImg,
-    demo: "https://youtu.be/ew4Q6IVt9Mk?si=JtAraw4HpwJmY5Lu",
+    demo: "https://www.youtube.com/watch?v=ew4Q6IVt9Mk",
   },
   {
     title: "Snake Quest",
     desc: "Modern reimagining of the classic with smooth gameplay, particle FX and progression.",
     tags: ["Game", "Unity", "Particles"],
     image: snakeImg,
-    demo: "https://youtu.be/kqTQSLz1HP0?si=SdboCrQV_c43y05D",
+    demo: "https://www.youtube.com/watch?v=kqTQSLz1HP0",
   },
 ];
 
@@ -111,7 +111,11 @@ export default function Projects() {
                     <a
                       href={p.demo}
                       target="_blank"
-                      rel="noreferrer"
+                      rel="noopener noreferrer"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        window.open(p.demo, "_blank", "noopener,noreferrer");
+                      }}
                       className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-neon-cyan transition-all hover:text-neon-magenta"
                     >
                       View Demo
