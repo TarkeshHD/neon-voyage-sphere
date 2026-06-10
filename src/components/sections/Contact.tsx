@@ -47,7 +47,7 @@ export default function Contact() {
             <div className="absolute -right-32 -top-32 h-80 w-80 rounded-full bg-neon-magenta/30 blur-3xl" />
             <div className="absolute -bottom-32 -left-32 h-80 w-80 rounded-full bg-neon-cyan/30 blur-3xl" />
 
-            <div className="relative grid gap-4 md:grid-cols-3">
+            <div className="relative grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
               {links.map((l, i) => (
                 <Reveal key={l.label} delay={i * 0.08}>
                   <a
