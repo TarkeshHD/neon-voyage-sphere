@@ -1,5 +1,5 @@
 import Reveal, { SectionHeading } from "../Reveal";
-import { Mail, Phone, Linkedin, MapPin } from "lucide-react";
+import { Mail, Phone, Linkedin, MapPin, Github } from "lucide-react";
 
 const links = [
   {
@@ -22,6 +22,13 @@ const links = [
     value: "prajwal-k-s-vrud",
     href: "https://linkedin.com/in/prajwal-k-s-vrud",
     color: "from-neon-purple to-neon-cyan",
+  },
+  {
+    icon: Github,
+    label: "GitHub",
+    value: "KSPRAJWAL",
+    href: "https://github.com/KSPRAJWAL",
+    color: "from-neon-blue to-neon-magenta",
   },
 ];
 

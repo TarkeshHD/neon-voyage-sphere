@@ -41,7 +41,7 @@ export default function Navbar() {
     >
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-3">
         <a href="#hero" className="font-display text-xl font-bold text-gradient">
-          PRAJWAL.XR
+          PRAJWAL KS
         </a>
         <ul className="hidden gap-1 md:flex">
           {links.map((l) => {
