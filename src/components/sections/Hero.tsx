@@ -35,14 +35,26 @@ export default function Hero() {
         </motion.div>
 
         <div className="flex flex-col items-center">
-          <motion.h1
+          <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5, duration: 0.8 }}
-            className="font-display text-5xl font-black leading-[1.05] tracking-tight md:text-7xl lg:text-8xl"
+            className="pointer-events-auto relative"
           >
-            <span className="text-gradient text-glow">PRAJWAL KS</span>
-          </motion.h1>
+            <div
+              aria-hidden
+              className="pointer-events-none absolute inset-0 -z-10 rounded-3xl blur-3xl opacity-70"
+              style={{
+                background:
+                  "radial-gradient(ellipse at center, rgba(168,85,247,0.55), rgba(34,211,238,0.35) 45%, transparent 75%)",
+              }}
+            />
+            <div className="rounded-2xl border border-white/10 bg-white/[0.06] px-8 py-5 backdrop-blur-xl shadow-[0_0_60px_rgba(168,85,247,0.25)]">
+              <h1 className="font-display text-5xl font-black leading-[1.05] tracking-tight text-white md:text-7xl lg:text-8xl">
+                PRAJWAL K S
+              </h1>
+            </div>
+          </motion.div>
 
           <motion.p
             initial={{ opacity: 0, y: 20 }}
