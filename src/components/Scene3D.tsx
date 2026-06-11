@@ -98,9 +98,6 @@ export default function Scene3D() {
         <pointLight position={[-10, -5, 5]} intensity={1} color="#00f0ff" />
         <pointLight position={[0, -8, -5]} intensity={0.8} color="#ff00d4" />
         <Stars radius={80} depth={50} count={4000} factor={4} saturation={1} fade speed={1} />
-        <Float speed={1.4} rotationIntensity={0.6} floatIntensity={1.2}>
-          <VRHeadset />
-        </Float>
         <FloatingShapes />
         <OrbitControls enableZoom={false} enablePan={false} autoRotate autoRotateSpeed={0.3} />
       </Suspense>
