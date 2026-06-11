@@ -1,6 +1,7 @@
 import { lazy, Suspense } from "react";
 import { motion } from "framer-motion";
-import { ArrowDown, Sparkles } from "lucide-react";
+import { ArrowDown } from "lucide-react";
+import vrHeadset from "@/assets/vr-headset.png.asset.json";
 
 const Scene3D = lazy(() => import("../Scene3D"));
 
@@ -13,18 +14,20 @@ export default function Hero() {
         </Suspense>
       </div>
 
+      {/* Rotating VR headset image */}
+      <div className="pointer-events-none absolute inset-0 z-[5] flex items-center justify-center">
+        <motion.img
+          src={vrHeadset.url}
+          alt="VR headset"
+          animate={{ rotate: 360 }}
+          transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
+          className="w-[80vw] max-w-[720px] opacity-60 mix-blend-screen drop-shadow-[0_0_60px_rgba(168,85,247,0.55)]"
+        />
+      </div>
+
       <div className="pointer-events-none absolute inset-0 z-10 bg-gradient-to-b from-background/40 via-transparent to-background" />
 
       <div className="relative z-20 mx-auto flex min-h-screen max-w-7xl flex-col items-center justify-center px-6 text-center">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.3 }}
-          className="mb-6 flex items-center gap-2 rounded-full glass px-4 py-1.5 text-xs font-medium text-neon-cyan"
-        >
-          <Sparkles className="h-3.5 w-3.5" />
-          Available for immersive XR opportunities
-        </motion.div>
 
         <motion.h1
           initial={{ opacity: 0, y: 30 }}
