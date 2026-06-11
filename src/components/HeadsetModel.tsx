@@ -1,6 +1,6 @@
 import { Suspense, useEffect, useRef, useState } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
-import { Environment, Float, OrbitControls, useGLTF } from "@react-three/drei";
+import { Environment, Float, OrbitControls, Stars, useGLTF } from "@react-three/drei";
 import * as THREE from "three";
 import headsetAsset from "@/assets/META_Q3.glb.asset.json";
 
@@ -108,6 +108,8 @@ export default function HeadsetModel() {
         {/* Back accent */}
         <pointLight position={[0, -2, -3]} intensity={6} color="#ff00d4" />
         <directionalLight position={[0, 3, 2]} intensity={0.4} />
+
+        <Stars radius={80} depth={50} count={2500} factor={4} saturation={1} fade speed={1} />
 
         <Float speed={1.2} rotationIntensity={0.15} floatIntensity={0.4}>
           <Headset />
