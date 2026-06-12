@@ -92,6 +92,7 @@ export default function HeadsetModel() {
       camera={{ position: [0, 0.2, 4.2], fov: 38 }}
       dpr={[1, 1.8]}
       gl={{ antialias: true, alpha: true }}
+      style={{ touchAction: "pan-y" }}
     >
       <Suspense fallback={null}>
         <ambientLight intensity={0.25} />
