@@ -35,8 +35,9 @@ function Headset() {
     scene.position.x += -center.x;
     scene.position.y += -center.y;
     scene.position.z += -center.z;
-    const scale = 2.6 / size;
+    const scale = 3.1 / size;
     scene.scale.setScalar(scale);
+    scene.position.y += 0.15;
   }, [scene]);
 
   return <primitive object={scene} />;
