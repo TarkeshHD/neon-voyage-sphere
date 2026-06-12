@@ -146,11 +146,12 @@ export default function Hero() {
             <CTAs className="mt-2" />
           </div>
 
-          {/* RIGHT — headset only */}
-          <div className="col-span-5 flex flex-col items-center">
+          {/* RIGHT — headset only, vertically centered */}
+          <div className="col-span-5 flex h-[78vh] flex-col items-center justify-center">
             <HeadsetCanvas className="h-[62vh] w-full" />
             <DragHint />
           </div>
+
         </div>
 
         <motion.div
@@ -163,19 +164,20 @@ export default function Hero() {
       </div>
 
       {/* ===== MOBILE LAYOUT ===== */}
-      <div className="relative z-0 flex min-h-screen flex-col items-center justify-start gap-5 px-5 pb-16 pt-24 text-center md:hidden">
+      <div className="relative z-0 flex min-h-screen flex-col items-center justify-start gap-4 px-5 pb-12 pt-24 text-center md:hidden">
         <Badge />
         <Name />
         <Role />
         <Description />
 
-        <div className="relative my-1 h-[42vh] w-full">
+        <div className="relative mt-2 h-[55vh] w-full">
           <HeadsetCanvas className="absolute inset-0" />
         </div>
 
         <DragHint />
         <CTAs className="justify-center" />
       </div>
+
     </section>
   );
 }
