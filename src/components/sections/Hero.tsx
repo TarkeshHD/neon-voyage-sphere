@@ -11,7 +11,7 @@ function Badge() {
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 0.3, duration: 0.6 }}
     >
-      <span className="rounded-full glass px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.2em] text-foreground/80">
+      <span className="inline-block rounded-full glass px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.2em] text-foreground/80">
         Enterprise XR Platform
       </span>
     </motion.div>
@@ -28,14 +28,19 @@ function Name() {
     >
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-0 -z-10 blur-3xl opacity-70"
+        className="pointer-events-none absolute inset-0 -z-10 blur-3xl opacity-60"
         style={{
           background:
-            "radial-gradient(ellipse at center, rgba(168,85,247,0.45), rgba(34,211,238,0.28) 45%, transparent 75%)",
+            "radial-gradient(ellipse at center, rgba(168,85,247,0.4), rgba(34,211,238,0.22) 45%, transparent 75%)",
         }}
       />
-      <h1 className="font-display text-5xl font-black leading-[1.05] tracking-tight text-white md:text-7xl lg:text-8xl"
-          style={{ textShadow: "0 0 28px rgba(168,85,247,0.55), 0 0 60px rgba(34,211,238,0.35)" }}>
+      <h1
+        className="font-display text-5xl font-black leading-[1.05] tracking-tight text-white sm:text-6xl lg:text-7xl xl:text-8xl"
+        style={{
+          textShadow:
+            "0 0 24px rgba(168,85,247,0.5), 0 0 48px rgba(34,211,238,0.3)",
+        }}
+      >
         PRAJWAL K S
       </h1>
     </motion.div>
@@ -48,7 +53,7 @@ function Role() {
       initial={{ opacity: 0, y: 16 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 0.7, duration: 0.6 }}
-      className="text-base font-medium text-foreground/90 md:text-2xl"
+      className="text-base font-medium text-foreground/90 md:text-xl"
     >
       Unity XR Developer · VR Simulation Engineer
     </motion.p>
@@ -63,18 +68,19 @@ function Description() {
       transition={{ delay: 0.9, duration: 0.6 }}
       className="max-w-xl text-sm text-muted-foreground md:text-base"
     >
-      Building immersive solutions that solve real-world problems through XR, simulation, and innovation.
+      Building immersive solutions that solve real-world problems through XR,
+      simulation, and innovation.
     </motion.p>
   );
 }
 
-function CTAs() {
+function CTAs({ className = "" }: { className?: string }) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 16 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 1.05, duration: 0.6 }}
-      className="flex flex-wrap items-center justify-center gap-4"
+      className={`flex flex-wrap items-center gap-4 ${className}`}
     >
       <a
         href="#projects"
@@ -106,15 +112,14 @@ function DragHint() {
   );
 }
 
-function HeadsetCanvas({ className }: { className?: string }) {
+function HeadsetCanvas({ className = "" }: { className?: string }) {
   return (
-    <div className={className}>
-      {/* glow halo */}
+    <div className={`relative ${className}`}>
       <div
         aria-hidden
         className="pointer-events-none absolute inset-0 flex items-center justify-center"
       >
-        <div className="h-[70%] w-[70%] rounded-full bg-[radial-gradient(circle,rgba(168,85,247,0.35),rgba(34,211,238,0.18)_45%,transparent_72%)] blur-3xl" />
+        <div className="h-[75%] w-[75%] rounded-full bg-[radial-gradient(circle,rgba(168,85,247,0.32),rgba(34,211,238,0.16)_45%,transparent_72%)] blur-3xl" />
       </div>
       <Suspense fallback={<div className="h-full w-full" />}>
         <HeadsetModel />
@@ -125,50 +130,51 @@ function HeadsetCanvas({ className }: { className?: string }) {
 
 export default function Hero() {
   return (
-    <section id="hero" className="relative min-h-screen w-full overflow-hidden">
+    <section
+      id="hero"
+      className="relative min-h-screen w-full overflow-hidden"
+    >
       {/* ===== DESKTOP LAYOUT ===== */}
       <div className="hidden md:block">
-        {/* Headset as background centerpiece */}
-        <HeadsetCanvas className="absolute inset-0 z-0" />
-        {/* readability vignette */}
-        <div className="pointer-events-none absolute inset-0 z-10 bg-gradient-to-b from-background/60 via-background/10 to-background" />
-
-        <div className="pointer-events-none relative z-20 mx-auto flex min-h-screen max-w-7xl flex-col items-center justify-between px-6 py-24 text-center">
-          <div className="pointer-events-auto">
+        <div className="mx-auto grid min-h-screen max-w-7xl grid-cols-12 items-center gap-8 px-8 py-24">
+          {/* LEFT — primary content */}
+          <div className="col-span-7 flex flex-col items-start gap-6 text-left">
             <Badge />
-          </div>
-
-          <div className="flex flex-col items-center gap-6">
-            <div className="pointer-events-auto"><Name /></div>
+            <Name />
             <Role />
             <Description />
-            <div className="pointer-events-auto"><CTAs /></div>
-            <DragHint />
+            <CTAs className="mt-2" />
           </div>
 
-          <motion.div
-            animate={{ y: [0, 8, 0] }}
-            transition={{ duration: 2, repeat: Infinity }}
-            className="text-muted-foreground"
-          >
-            <ArrowDown className="h-5 w-5" />
-          </motion.div>
+          {/* RIGHT — headset only */}
+          <div className="col-span-5 flex flex-col items-center">
+            <HeadsetCanvas className="h-[62vh] w-full" />
+            <DragHint />
+          </div>
         </div>
+
+        <motion.div
+          animate={{ y: [0, 8, 0] }}
+          transition={{ duration: 2, repeat: Infinity }}
+          className="absolute bottom-6 left-1/2 -translate-x-1/2 text-muted-foreground"
+        >
+          <ArrowDown className="h-5 w-5" />
+        </motion.div>
       </div>
 
       {/* ===== MOBILE LAYOUT ===== */}
-      <div className="relative z-0 flex min-h-screen flex-col items-center justify-start gap-6 px-5 pb-16 pt-24 text-center md:hidden">
+      <div className="relative z-0 flex min-h-screen flex-col items-center justify-start gap-5 px-5 pb-16 pt-24 text-center md:hidden">
         <Badge />
         <Name />
         <Role />
+        <Description />
 
-        <div className="relative my-2 h-[42vh] w-full">
+        <div className="relative my-1 h-[42vh] w-full">
           <HeadsetCanvas className="absolute inset-0" />
         </div>
 
-        <Description />
-        <CTAs />
         <DragHint />
+        <CTAs className="justify-center" />
       </div>
     </section>
   );
