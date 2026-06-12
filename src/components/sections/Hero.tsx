@@ -147,9 +147,11 @@ export default function Hero() {
           </div>
 
           {/* RIGHT — headset only, vertically centered */}
-          <div className="col-span-5 flex h-[78vh] flex-col items-center justify-center">
+          <div className="relative col-span-5 flex h-[78vh] items-center justify-center">
             <HeadsetCanvas className="h-[62vh] w-full" />
-            <DragHint />
+            <div className="absolute bottom-4 left-0 right-0 flex justify-center">
+              <DragHint />
+            </div>
           </div>
 
         </div>
@@ -164,13 +166,13 @@ export default function Hero() {
       </div>
 
       {/* ===== MOBILE LAYOUT ===== */}
-      <div className="relative z-0 flex min-h-screen flex-col items-center justify-start gap-4 px-5 pb-12 pt-24 text-center md:hidden">
+      <div className="relative z-0 flex min-h-screen flex-col items-center justify-start gap-4 px-5 pb-8 pt-24 text-center md:hidden">
         <Badge />
         <Name />
         <Role />
         <Description />
 
-        <div className="relative mt-2 h-[55vh] w-full">
+        <div className="relative mt-2 h-[62vh] w-full">
           <HeadsetCanvas className="absolute inset-0" />
         </div>
 
