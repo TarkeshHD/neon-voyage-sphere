@@ -8,7 +8,7 @@ export default function Profile() {
         <Reveal>
           <div className="grid items-center gap-10 md:grid-cols-5">
             <div className="md:col-span-2">
-              <div className="group relative mx-auto w-full max-w-[340px]">
+              <div className="group relative mx-auto w-full max-w-[340px] cursor-pointer">
                 <div className="absolute -inset-3 rounded-3xl bg-gradient-to-br from-neon-magenta via-neon-purple to-neon-cyan opacity-60 blur-2xl transition-opacity group-hover:opacity-90 group-active:opacity-90" />
                 <div className="relative overflow-hidden rounded-3xl border border-white/15 glass-strong">
                   <img
