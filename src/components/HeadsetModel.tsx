@@ -37,7 +37,8 @@ function Headset() {
     scene.position.z += -center.z;
     const scale = 3.1 / size;
     scene.scale.setScalar(scale);
-    scene.position.y += 0.15;
+    // Lower the visual center so the headset sits in the middle of the frame.
+    scene.position.y -= 0.35;
   }, [scene]);
 
   return <primitive object={scene} />;
@@ -89,7 +90,7 @@ export default function HeadsetModel() {
   return (
     <Canvas
       shadows
-      camera={{ position: [0, 0.2, 4.2], fov: 38 }}
+      camera={{ position: [0, 0, 4.2], fov: 38 }}
       dpr={[1, 1.8]}
       gl={{ antialias: true, alpha: true }}
       style={{ touchAction: "pan-y" }}

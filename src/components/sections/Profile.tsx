@@ -8,13 +8,13 @@ export default function Profile() {
         <Reveal>
           <div className="grid items-center gap-10 md:grid-cols-5">
             <div className="md:col-span-2">
-              <div className="group relative mx-auto w-full max-w-[340px]">
-                <div className="absolute -inset-3 rounded-3xl bg-gradient-to-br from-neon-magenta via-neon-purple to-neon-cyan opacity-60 blur-2xl transition-opacity group-hover:opacity-90" />
+              <div className="group relative mx-auto w-full max-w-[340px] cursor-pointer">
+                <div className="absolute -inset-3 rounded-3xl bg-gradient-to-br from-neon-magenta via-neon-purple to-neon-cyan opacity-60 blur-2xl transition-opacity group-hover:opacity-90 group-active:opacity-90" />
                 <div className="relative overflow-hidden rounded-3xl border border-white/15 glass-strong">
                   <img
                     src={prajwalPhoto.url}
                     alt="Prajwal K S"
-                    className="block h-full w-full object-cover mix-blend-luminosity contrast-110 saturate-110 transition-all duration-700 group-hover:mix-blend-normal"
+                    className="block h-full w-full object-cover mix-blend-luminosity contrast-110 saturate-110 transition-all duration-700 group-hover:mix-blend-normal group-active:mix-blend-normal"
                   />
                   <div className="pointer-events-none absolute inset-0 bg-gradient-to-tr from-neon-purple/30 via-transparent to-neon-cyan/20" />
                 </div>
