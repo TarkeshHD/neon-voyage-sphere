@@ -77,7 +77,7 @@ export default function Contact() {
             <div className="relative mt-8 flex flex-wrap items-center justify-between gap-4 border-t border-white/10 pt-6 text-sm text-muted-foreground">
               <div className="inline-flex items-center gap-2">
                 <MapPin className="h-4 w-4 text-neon-cyan" />
-                Chamarajanagar, Karnataka · India
+                Mysore, Karnataka · India
               </div>
               <p>© {new Date().getFullYear()} Prajwal K S — Crafted in the metaverse.</p>
             </div>
