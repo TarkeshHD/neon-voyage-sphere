@@ -1,6 +1,6 @@
-import { Suspense, useEffect, useRef, useState } from "react";
-import { Canvas, useFrame } from "@react-three/fiber";
-import { ContactShadows, Environment, OrbitControls, Stars, useGLTF } from "@react-three/drei";
+import { Suspense, useEffect, useRef } from "react";
+import { Canvas, useFrame, useThree } from "@react-three/fiber";
+import { ContactShadows, Environment, Stars, useGLTF } from "@react-three/drei";
 import * as THREE from "three";
 import headsetAsset from "@/assets/META_Q3.glb.asset.json";
 
@@ -37,7 +37,6 @@ function Headset() {
     scene.position.z += -center.z;
     const scale = 3.1 / size;
     scene.scale.setScalar(scale);
-    // Lower the visual center so the headset sits in the middle of the frame.
     scene.position.y -= 0.35;
   }, [scene]);
 
@@ -46,43 +45,63 @@ function Headset() {
 
 function Rig() {
   const groupRef = useRef<THREE.Group>(null);
-  const controlsRef = useRef<any>(null);
-  const [interacting, setInteracting] = useState(false);
+  const { gl } = useThree();
+  const isDraggingRef = useRef(false);
+  const lastPosRef = useRef({ x: 0, y: 0 });
   const idleTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
+  useEffect(() => {
+    const canvas = gl.domElement;
+
+    const handleMove = (e: PointerEvent) => {
+      if (!isDraggingRef.current || !groupRef.current) return;
+      const rect = canvas.getBoundingClientRect();
+      const x = ((e.clientX - rect.left) / rect.width) * 2 - 1;
+      const y = -((e.clientY - rect.top) / rect.height) * 2 + 1;
+      const dx = x - lastPosRef.current.x;
+      const dy = y - lastPosRef.current.y;
+      groupRef.current.rotation.y += dx * 3;
+      groupRef.current.rotation.x += dy * 1.5;
+      groupRef.current.rotation.x = THREE.MathUtils.clamp(
+        groupRef.current.rotation.x,
+        -Math.PI / 2.5,
+        Math.PI / 2.5
+      );
+      lastPosRef.current = { x, y };
+    };
+
+    const handleUp = () => {
+      isDraggingRef.current = false;
+      if (idleTimer.current) clearTimeout(idleTimer.current);
+    };
+
+    canvas.addEventListener("pointermove", handleMove);
+    window.addEventListener("pointerup", handleUp);
+    window.addEventListener("pointercancel", handleUp);
+
+    return () => {
+      canvas.removeEventListener("pointermove", handleMove);
+      window.removeEventListener("pointerup", handleUp);
+      window.removeEventListener("pointercancel", handleUp);
+    };
+  }, [gl]);
+
+  const handlePointerDown = (e: any) => {
+    isDraggingRef.current = true;
+    lastPosRef.current = { x: e.pointer.x, y: e.pointer.y };
+    if (idleTimer.current) clearTimeout(idleTimer.current);
+  };
+
   useFrame((_, delta) => {
-    if (controlsRef.current) controlsRef.current.update();
-    // Slow idle auto-rotation applied to group (not controls) so user mouse
-    // movement never affects it.
-    if (groupRef.current && !interacting) {
+    if (groupRef.current && !isDraggingRef.current) {
       groupRef.current.rotation.y += delta * 0.25;
     }
   });
 
   return (
-    <>
-      <group ref={groupRef}>
-        <Headset />
-      </group>
-      <OrbitControls
-        ref={controlsRef}
-        enableZoom={false}
-        enablePan={false}
-        enableDamping
-        dampingFactor={0.08}
-        rotateSpeed={0.9}
-        minPolarAngle={Math.PI / 3}
-        maxPolarAngle={Math.PI / 1.7}
-        onStart={() => {
-          setInteracting(true);
-          if (idleTimer.current) clearTimeout(idleTimer.current);
-        }}
-        onEnd={() => {
-          if (idleTimer.current) clearTimeout(idleTimer.current);
-          idleTimer.current = setTimeout(() => setInteracting(false), 3000);
-        }}
-      />
-    </>
+    <group ref={groupRef} onPointerDown={handlePointerDown}>
+      <Headset />
+    </group>
   );
 }
 
