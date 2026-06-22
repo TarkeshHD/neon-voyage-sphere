@@ -3,7 +3,7 @@ import prajwalPhoto from "@/assets/prajwal-photo.png.asset.json";
 
 export default function Profile() {
   return (
-    <section id="profile" className="relative py-24 md:py-32">
+    <section id="profile" className="relative py-12 md:py-32">
       <div className="mx-auto max-w-5xl px-6">
         <Reveal>
           <div className="grid items-center gap-10 md:grid-cols-5">
