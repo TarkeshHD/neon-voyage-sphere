@@ -119,7 +119,7 @@ function HeadsetCanvas({ className = "" }: { className?: string }) {
         aria-hidden
         className="pointer-events-none absolute inset-0 flex items-center justify-center"
       >
-        <div className="h-[75%] w-[75%] rounded-full bg-[radial-gradient(circle,rgba(168,85,247,0.32),rgba(34,211,238,0.16)_45%,transparent_72%)] blur-3xl" />
+        <div className="h-[95%] w-[95%] rounded-full bg-[radial-gradient(circle,rgba(168,85,247,0.32),rgba(34,211,238,0.16)_45%,transparent_72%)] blur-3xl" />
       </div>
       <Suspense fallback={<div className="h-full w-full" />}>
         <HeadsetModel />
