@@ -3,7 +3,7 @@ import { GraduationCap, Award, FileText } from "lucide-react";
 
 export default function Education() {
   return (
-    <section id="education" className="relative py-24 md:py-32">
+    <section id="education" className="relative py-12 md:py-32">
       <div className="mx-auto max-w-6xl px-6">
         <SectionHeading eyebrow="Education & Credentials" title="Learning & recognition" />
 

@@ -172,7 +172,7 @@ export default function Hero() {
         <Role />
         <Description />
 
-        <div className="relative h-[42vh] w-full">
+        <div className="relative h-[84vh] w-full">
           <HeadsetCanvas className="absolute inset-0" />
         </div>
 
