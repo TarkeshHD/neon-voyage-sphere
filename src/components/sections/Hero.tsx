@@ -166,13 +166,13 @@ export default function Hero() {
       </div>
 
       {/* ===== MOBILE LAYOUT ===== */}
-      <div className="relative z-0 flex min-h-screen flex-col items-center justify-start gap-3 px-5 pb-4 pt-20 text-center md:hidden">
+      <div className="relative z-0 flex min-h-screen flex-col items-center justify-start gap-2 px-5 pb-4 pt-20 text-center md:hidden">
         <Badge />
         <Name />
         <Role />
         <Description />
 
-        <div className="relative h-[58vh] w-full">
+        <div className="relative h-[44vh] w-full">
           <HeadsetCanvas className="absolute inset-0" />
         </div>
 
